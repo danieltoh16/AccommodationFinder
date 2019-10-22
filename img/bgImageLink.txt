@@ -1,0 +1,16 @@
+Links for images: 
+
+bg-masthead (background image 1)
+https://www.rtu.lv/en/studies/student-life/accomodation-1
+
+bg-masthead 2 (background image 2)
+https://www.kent.ac.uk/accommodation/
+
+bg-masthead 3 (background image 3)
+https://www.holidayinnmelbourneairport.com.au/accommodation/
+
+bg-masthead 4 (background image 4)
+https://www.qmul.ac.uk/study/accommodation/
+
+favicon (32x32)
+https://www.iconsdb.com/white-icons/home-6-icon.html
