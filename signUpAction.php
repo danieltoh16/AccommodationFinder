@@ -29,18 +29,18 @@ $sql_email = "SELECT COUNT (*) FROM users WHERE email LIKE '$email'";
 
 if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
 	if ($sql_uName > 0){
-    echo "<SCRIPT>alert('$sql_uName');</SCRIPT>";
+    echo "<SCRIPT type=\"text/javascript\">alert('$uNameError');</SCRIPT>";
     echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
   } else if ($sql_email > 0){
-    echo "<SCRIPT>alert('$sql_email');</SCRIPT>";
+    echo "<SCRIPT type=\"text/javascript\">alert('$emailError');</SCRIPT>";
     echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
   } else {
-    echo "<SCRIPT>alert('$msg');</SCRIPT>";
+    echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
     echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
   }
 }
 else {
-	echo "<SCRIPT>alert('$wrongMsg');</SCRIPT>";
+	echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
 	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
 }
 
