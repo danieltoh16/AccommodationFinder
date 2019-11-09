@@ -16,12 +16,10 @@ if ($conn->connect_error) {
 $uname = $_POST['uname'];
 $pass= $_POST['password'];
 
-$msg= "Invalid login. Please try again.";
-
 $sql = "SELECT username FROM users WHERE username = ". "'".$uname."'" . " AND " ."password=". "'".$pass . "'" ;
 
 $result = mysqli_query($conn,$sql);
-$wrongMsg = "Invalid login";
+$wrongMsg = "Invalid login. Please try again.";
 
 if ($result && $result->num_rows) {
 	//header('Location: ')
@@ -31,19 +29,16 @@ if ($result && $result->num_rows) {
 		$utype=$value['usertype'];
 		if ($utype == 0) {
 			header('Location: landlordHome.html');
-		}
-		else if($utype == 1){
+		} else if($utype == 1){
 			header('Location: applicantHome.html');
-		}
-		else{
-			echo "<SCRIPT>alert('$wrongMsg');</SCRIPT>";
-			header('Location: index.html');
+		} else{
+			echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
+      echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
 		}
 	}
-
-}
-else {
-	echo "<SCRIPT>alert('$msg');</SCRIPT>";
+} else {
+	echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
+  echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
 }
 
 ?>

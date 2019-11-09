@@ -28,15 +28,15 @@ $sql = "INSERT INTO users (`staffID`, `usertype`, `username`, `password`, `fullN
 
 if ($conn->query($sql) === TRUE) {
 	echo "<SCRIPT>alert('$msg');</SCRIPT>";
-	header ('Location: login.html');
+	echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
 }
 else if ($result && $result->num_rows){
   echo "<SCRIPT>alert('$msg');</SCRIPT>";
-	header ('Location: login.html');
+	echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
 }
 else {
 	echo "<SCRIPT>alert('$wrongMsg');</SCRIPT>";
-	header ('Location: signUp.html');
+	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
 }
 
 $conn->close();
