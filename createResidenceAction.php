@@ -29,7 +29,7 @@ if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
   echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.html';</SCRIPT>");
 } else {
   echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
-  echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.html';</SCRIPT>");
+  echo("<SCRIPT type=\"text/javascript\">window.location = 'createAccommodation.html';</SCRIPT>");
 }
 
 $conn->close();

@@ -11,8 +11,6 @@ if ($conn->connect_error) {
     echo("Connection failed: " . $conn->connect_error);
 }
 
-//$conn->select_db("sas");
-
 $uname = $_POST['uname'];
 $pass= $_POST['password'];
 
@@ -28,9 +26,16 @@ if ($result && $result->num_rows) {
 	foreach ($result2 as  $value) {
 		$utype=$value['usertype'];
 		if ($utype == 0) {
-			header('Location: landlordHome.html');
+			echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.php';</SCRIPT>");
+      echo("<SCRIPT type=\"text/javascript\">window.location.href = '../landlordHome.php?uname=$uname';</SCRIPT>");
 		} else if($utype == 1){
-			header('Location: applicantHome.html');
+			echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
+      echo("<SCRIPT type=\"text/javascript\">
+      $(".btn btn-success").click(fucntion()){
+        var $keyword = $(this).closest("tr");
+      	var $keyword = $keyword.find(".search").text();
+        window.location.href = '../applicantHome.php?uname=$keyword';
+      </SCRIPT>");
 		} else{
 			echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
       echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
