@@ -50,7 +50,7 @@ session_start();
             <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -73,7 +73,7 @@ session_start();
           <p class="text-white-75 font-weight-light mb-5"> What would you like to do today?</p>
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Search for an accomodation</a>
           <br><br>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantViewApplications.html">View your past applications</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantViewApplications.php">View your past applications</a>
         </div>
       </div>
     </div>

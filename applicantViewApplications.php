@@ -1,5 +1,5 @@
 <?php
-  $keyword = $_GET['search'];
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantHome.html">Home</a>
+            <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
@@ -65,13 +65,13 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">List of applications made by you</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">List of applications
+            made by <?php echo $_SESSION["Username"]; ?></font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th><font color="white">Applicant name</font></th>
                 <th><font color="white">Date of application</font></th>
                 <th><font color="white">Required month</font></th>
                 <th><font color="white">Required year</font></th>
@@ -91,21 +91,23 @@
               }
               $conn->select_db("accommodationfinder");
 
-              $lq = "SELECT * FROM application WHERE applyUName LIKE '$keyword'";
+              $uName = $_SESSION["Username"];
+
+              $lq = "SELECT * FROM application WHERE applyUName = '$uName'";
               $res = $conn->query($lq);
               foreach($res as $opt){
               ?>
                 <tr>
-                  <th scope="row" class="name"><font color="white">Daniel Toh</font></th>
-                  <td class="date"><font color="white">1/1/2019</font></td>
-                  <td class="month"><font color="white">January</font></td>
-                  <td class="year"><font color="white">2019</font></td>
-                  <td class="status"><font color="white">Pending</font></td>
+                  <th scope="row" class="date"><font color="white"><?php echo $opt['applyDate']?></font></th>
+                  <td class="month"><font color="white"><?php echo $opt['reqMonth']?></font></td>
+                  <td class="year"><font color="white"><?php echo $opt['reqYear']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['status']?></font></td>
                 </tr>
+              <?php }?>
             </tbody>
           </table>
           <br><br>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.html">Back</a>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.php">Back</a>
       </div>
     </div>
   </header>
