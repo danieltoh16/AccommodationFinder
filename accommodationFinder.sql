@@ -71,10 +71,10 @@ CREATE TABLE `residence` (
 --
 
 INSERT INTO `residence` (`resID`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('PRG-5caec0ceee50a8.60700779', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '4', '1000', '600', 'Admin'),
-('PRG-1', 'House', '1', '1500', '600', 'Admin'),
-('PRG-2', 'House', '2', '1750', '600', 'Admin'),
-('PRG-3', 'House', '3', '10000', '600', 'Admin');
+('RES-5caec0ceee50a8.60700779', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '4', '1000', '600', 'Admin'),
+('RES-1', 'House', '1', '1500', '600', 'Admin'),
+('RES-2', 'House', '2', '1750', '600', 'Admin'),
+('RES-3', 'House', '3', '10000', '600', 'Admin');
 
 
 -- --------------------------------------------------------
@@ -94,8 +94,8 @@ CREATE TABLE `unit` (
 --
 
 INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
-('PRG-5caec0ceee50a8.60700779', '1', 'available'),
-('PRG-5caec0ceee50a8.60700779', '2', 'available');
+('RES-5caec0ceee50a8.60700779', '1', 'available'),
+('RES-5caec0ceee50a8.60700779', '2', 'available');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`staffID`, `usertype`, `username`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
-('10', 0, 'Admin', 'admin', 'AF Admin', '', ''),
+('ADM-1', 0, 'Admin', 'admin', 'AF Admin', '', ''),
 ('', 1, 'Jason', '1', 'Jason', 'Jason', '1200'),
 ('ADM-5caed2df820a45.98044678', 0, 'uniAdmin', 'uniAdmin1', '', 'H', ''),
 ('', 1, 'App', '1234', 'John doe', 'Jdot', '1100'),
@@ -202,7 +202,7 @@ ALTER TABLE `allocation`
   ADD PRIMARY KEY (`applyID`);
   ADD FOREIGN KEY (`unitNo`) REFERENCES unit(`unitNo`);
   ADD FOREIGN KEY (`applyID`) REFERENCES application(`applyID`);*/
- 
+
 
 COMMIT;
 

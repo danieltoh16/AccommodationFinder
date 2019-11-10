@@ -27,15 +27,12 @@ if ($result && $result->num_rows) {
 		$utype=$value['usertype'];
 		if ($utype == 0) {
 			echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.php';</SCRIPT>");
-      echo("<SCRIPT type=\"text/javascript\">window.location.href = '../landlordHome.php?uname=$uname';</SCRIPT>");
+      session_start();
+      $_SESSION["Username"] = "$uname";
 		} else if($utype == 1){
 			echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
-      echo("<SCRIPT type=\"text/javascript\">
-      $(".btn btn-success").click(fucntion()){
-        var $keyword = $(this).closest("tr");
-      	var $keyword = $keyword.find(".search").text();
-        window.location.href = '../applicantHome.php?uname=$keyword';
-      </SCRIPT>");
+      session_start();
+      $_SESSION["Username"] = "$uname";
 		} else{
 			echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
       echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
