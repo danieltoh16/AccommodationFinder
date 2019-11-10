@@ -43,8 +43,8 @@ CREATE TABLE `application` (
 --
 
 INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`) VALUES
-('APP-5cabb148ecd3d3.62079945', '0000-00-00', 'January', '2020', 'New', 'Jason', 'PRG-5caec0ceee50a8.60700779'),
-('APP-5cabb14d9bf098.23809809', '0000-00-00', 'February', '2020', 'New', 'James', 'PRG-5caec0ceee50a8.60700779'),
+('APP-5cabb148ecd3d3.62079945', '2018-03-18', 'January', '2020', 'New', 'Jason', 'PRG-5caec0ceee50a8.60700779'),
+('APP-5cabb14d9bf098.23809809', '2018-08-19', 'February', '2020', 'New', 'James', 'PRG-5caec0ceee50a8.60700779'),
 ('APP-5cac331177c711.88469473', '2019-04-09', 'April', '2020', 'New', 'Jason', 'PRG-5caec0ceee50a8.60700779'),
 ('APP-5cac346a2f9232.91667553', '2019-04-09', 'May', '2020', 'New', 'James', 'PRG-5caec0ceee50a8.60700779'),
 ('APP-5cac42ef096e21.41079669', '2019-04-09', 'July', '2019', 'New', 'Jason', 'PRG-5caec0ceee50a8.60700779'),
@@ -59,6 +59,7 @@ INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `statu
 
 CREATE TABLE `residence` (
   `resID` varchar(100) NOT NULL,
+  `resName` varchar(200) NOT NULL,
   `address` varchar(500) NOT NULL,
   `numUnits` varchar(100) NOT NULL,
   `sizePerUnit` varchar(100) NOT NULL,
@@ -70,11 +71,11 @@ CREATE TABLE `residence` (
 -- Dumping data for table `residence`
 --
 
-INSERT INTO `residence` (`resID`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-5caec0ceee50a8.60700779', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '4', '1000', '600', 'Admin'),
-('RES-1', 'House', '1', '1500', '600', 'Admin'),
-('RES-2', 'House', '2', '1750', '600', 'Admin'),
-('RES-3', 'House', '3', '10000', '600', 'Admin');
+INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
+('RES-5caec0ceee50a8.60700779', 'HELP Residence', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '4', '1000', '600', 'Admin'),
+('RES-1', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
+('RES-2', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
+('RES-3', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '3', '10000', '600', 'Admin');
 
 
 -- --------------------------------------------------------
@@ -94,8 +95,12 @@ CREATE TABLE `unit` (
 --
 
 INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
-('RES-5caec0ceee50a8.60700779', '1', 'available'),
-('RES-5caec0ceee50a8.60700779', '2', 'available');
+('RES-1', '1', 'available'),
+('RES-2', '1', 'available'),
+('RES-2', '2', 'available'),
+('RES-3', '1', 'available'),
+('RES-3', '2', 'available'),
+('RES-3', '3', 'available');
 
 -- --------------------------------------------------------
 

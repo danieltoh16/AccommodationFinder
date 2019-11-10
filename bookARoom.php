@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>Available Rooms for Residence</title>
+  <title>Available Rooms for "<?php echo $_SESSION["appResID"] ?>"</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,6 +33,8 @@
 </head>
 
 <body id="page-top">
+
+  <form action="loginAction.php" method="POST">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -62,7 +67,8 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="6">List of available rooms for HELP Residence</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="6">
+            List of available rooms for "<?php echo $_SESSION["appResID"] ?>"</font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover" border="0" width="200%">
@@ -74,22 +80,38 @@
               </tr>
             </thead>
             <tbody>
+              <?php
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+
+              $conn = new mysqli($servername, $username, $password);
+
+              if ($conn->connect_error) {
+                  echo("Connection failed: " . $conn->connect_error);
+              }
+              $conn->select_db("accommodationfinder");
+
+              $rID = $_SESSION["appResID"];
+
+              $lq = "SELECT * FROM unit WHERE resID LIKE '$rID'";
+              $res = $conn->query($lq);
+              foreach($res as $opt){
+              ?>
                 <tr>
-                  <th scope="row" class="number"><font color="white">Unit 001</font></th>
-                  <td class="available"><font color="white">Available</font></td>
-                  <td class="button"><a href=""><font color="white"><button style="background-color:#F35119; color:white; display: inline;">Book this room</button></font></a></td>
+                  <th scope="row" class="number"><font color="white"><?php echo $opt['unitNo']?></font></th>
+                  <td class="available"><font color="white"><?php echo $opt['availability']?></font></td>
+                  <td class="button"><font color="white"><button style="background-color:#F35119; color:white;
+                   display: inline;">Book this room</button></font></td>
                 </tr>
-                <tr>
-                  <th scope="row" class="number"><font color="white">Unit 002</font></th>
-                  <td class="available"><font color="white">Reserved</font></td>
-                  <td class="button"><a href=""><font color="white"><button style="background-color:#F35119; color:white; display: none;">Book this room</button></font></a></td>
-                </tr>
+              <?php }?>
             </tbody>
           </table>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
       </div>
     </div>
   </header>
+</form>
 
   <!-- Footer -->
   <!-- This section shows the copyright of the website-->

@@ -1,5 +1,6 @@
 <?php
   $keyword = $_GET['search'];
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>Search Results for Keyword</title>
+  <title>Search Results for "<?php echo $keyword ?>"</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,10 +66,10 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Search results for "keyword"</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Search results for "<?php echo $keyword ?>"</font></h1>
           <hr class="divider my-4">
         </div>
-          <table class="table table-hover" border="0" width="200%">
+          <table class="table table-hover" border="0" width="300%">
             <thead>
               <tr>
                 <th><font color="white">Residence ID</font></th>
@@ -92,18 +93,18 @@
               }
               $conn->select_db("accommodationfinder");
 
-              $lq = "SELECT * FROM residence WHERE address LIKE '$keyword'";
+              $lq = "SELECT * FROM residence WHERE resName LIKE '$keyword'";
               $res = $conn->query($lq);
               foreach($res as $opt){
               ?>
                 <tr>
-                  <th scope="row" class="id"><font color="white"><?php echo $opt['resID']?></font></th>
+                  <th scope="row" name="resid" class="resid" id="resid"><font color="white"><?php echo $opt['resID']?></font></th>
                   <td class="location"><font color="white"><?php echo $opt['address']?></font></td>
                   <td class="norooms"><font color="white"><?php echo $opt['numUnits']?></font></td>
                   <td class="sizeroom"><font color="white"><?php echo $opt['sizePerUnit']?></font></td>
                   <td class="price"><font color="white"><?php echo $opt['monthlyRental']?></font></td>
-                  <td class="button"><a href="bookARoom.html"><font color="white"><button style="background-color:#F35119;
-                  color:white;">Book a room</button></font></a></td>
+                  <td class="button"><a href="bookARoom.php"><font color="white">
+                    <button style="background-color:#F35119; color:white;">Book a room</button></font></a></td>
                 </tr>
               <?php }?>
             </tbody>

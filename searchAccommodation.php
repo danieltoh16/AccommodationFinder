@@ -68,7 +68,7 @@
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5">Enter the address of a residence to search for an accommodation in the search bar below</p>
+          <p class="text-white-75 font-weight-light mb-5">Enter the name of a residence to search for an accommodation in the search bar below</p>
           <div class="form-group has-danger">
               <label class="sr-only" for="search">Search</label>
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
