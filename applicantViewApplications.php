@@ -1,3 +1,6 @@
+<?php
+  $keyword = $_GET['search'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +11,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Title displayed on the tabs -->
-  <title>Landlord Homepage</title>
+  <!-- Title displayed on the tab -->
+  <title>View Applications - Applicant</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +28,7 @@
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="css/creative4.min.css" rel="stylesheet">
+  <link href="css/creative3.5.min.css" rel="stylesheet">
 
 </head>
 
@@ -41,13 +44,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
+            <a class="nav-link js-scroll-trigger" href="applicantHome.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="createAccommodation.html">Create residence</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="landlordViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -62,16 +65,47 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold">Welcome back</h1>
-          <h1 class="text-uppercase text-white font-weight-bold">Landlord!</h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">List of applications made by you</font></h1>
           <hr class="divider my-4">
         </div>
-        <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5"> What would you like to do today?</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="createAccommodation.html">Create a profile for a residence</a>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><font color="white">Applicant name</font></th>
+                <th><font color="white">Date of application</font></th>
+                <th><font color="white">Required month</font></th>
+                <th><font color="white">Required year</font></th>
+                <th><font color="white">Application status</font></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+
+              $conn = new mysqli($servername, $username, $password);
+
+              if ($conn->connect_error) {
+                  echo("Connection failed: " . $conn->connect_error);
+              }
+              $conn->select_db("accommodationfinder");
+
+              $lq = "SELECT * FROM application WHERE applyUName LIKE '$keyword'";
+              $res = $conn->query($lq);
+              foreach($res as $opt){
+              ?>
+                <tr>
+                  <th scope="row" class="name"><font color="white">Daniel Toh</font></th>
+                  <td class="date"><font color="white">1/1/2019</font></td>
+                  <td class="month"><font color="white">January</font></td>
+                  <td class="year"><font color="white">2019</font></td>
+                  <td class="status"><font color="white">Pending</font></td>
+                </tr>
+            </tbody>
+          </table>
           <br><br>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="landlordViewApplications.html">View submitted applications for residences</a>
-        </div>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.html">Back</a>
       </div>
     </div>
   </header>

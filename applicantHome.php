@@ -1,3 +1,6 @@
+<?php
+  $uName = $_GET['uname'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +66,7 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <h1 class="text-uppercase text-white font-weight-bold">Welcome back</h1>
-          <h1 class="text-uppercase text-white font-weight-bold">Applicant!</h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><?php echo $uName; ?></h1>
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">

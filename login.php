@@ -95,7 +95,7 @@
           <div class="row" style="padding-top: 1rem">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                  <a href="landlordHome.html"><button type="submit" class="btn btn-success">
+                  <a href="landlordHome.php?id=<?php echo $option['uname']; ?>"><button type="submit" class="btn btn-success">
                     <i class="fas fa-sign-in-alt"></i>&nbsp  Login</button></a>
               </div>
           </div>
