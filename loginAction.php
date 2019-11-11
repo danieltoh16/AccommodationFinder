@@ -20,7 +20,6 @@ $result = mysqli_query($conn,$sql);
 $wrongMsg = "Invalid login. Please try again.";
 
 if ($result && $result->num_rows) {
-	//header('Location: ')
 	$userIDs = "SELECT usertype FROM users WHERE username = ". "'".$uname."'" . " AND " ."password=". "'".$pass . "'";
 	$result2 = $conn->query($userIDs);
 	foreach ($result2 as  $value) {
