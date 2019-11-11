@@ -73,6 +73,7 @@
             <thead>
               <tr>
                 <th><font color="white">Residence ID</font></th>
+                <th><font color="white">Residence Name</font></th>
                 <th><font color="white">Location</font></th>
                 <th><font color="white">Number of rooms</font></th>
                 <th><font color="white">Size per room</font></th>
@@ -93,18 +94,21 @@
               }
               $conn->select_db("accommodationfinder");
 
-              $lq = "SELECT * FROM residence WHERE resName LIKE '$keyword'";
+              $searchKeyword = "%".$keyword."%";
+
+              $lq = "SELECT * FROM residence WHERE resName LIKE '$searchKeyword'";
               $res = $conn->query($lq);
               foreach($res as $opt){
               ?>
                 <tr>
                   <th scope="row" name="resid" class="resid" id="resid"><font color="white"><?php echo $opt['resID']?></font></th>
+                  <td class="name"><font color="white"><?php echo $opt['resName']?></font></td>
                   <td class="location"><font color="white"><?php echo $opt['address']?></font></td>
                   <td class="norooms"><font color="white"><?php echo $opt['numUnits']?></font></td>
                   <td class="sizeroom"><font color="white"><?php echo $opt['sizePerUnit']?></font></td>
                   <td class="price"><font color="white"><?php echo $opt['monthlyRental']?></font></td>
-                  <td class="button"><a href="bookARoom.php"><font color="white">
-                    <button style="background-color:#F35119; color:white;">Book a room</button></font></a></td>
+                  <td class="button"><a href="bookARoom.php"><font color="white"><button style="background-color:#F35119; color:white;">
+                    Book a room</button></font></a></td>
                 </tr>
               <?php }?>
             </tbody>

@@ -73,7 +73,7 @@ CREATE TABLE `residence` (
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
 ('RES-5caec0ceee50a8.60700779', 'HELP Residence', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '4', '1000', '600', 'Admin'),
-('RES-1', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
+('RES-1', 'House', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
 ('RES-2', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
 ('RES-3', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '3', '10000', '600', 'Admin');
 
