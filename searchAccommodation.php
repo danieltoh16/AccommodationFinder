@@ -78,8 +78,8 @@
           <div class="row" style="padding-top: 1rem">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                  <a href="accommodationList.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt">
-                  </i>&nbsp  Search</button></a>
+                  <a href="accommodationList.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success">
+                    <i class="fas fa-sign-in-alt"></i>&nbsp  Search</button></a>
               </div>
           </div>
           <br><br>
@@ -108,8 +108,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
-
-  <script src="accommodationAction.js"></script>
 
 </body>
 

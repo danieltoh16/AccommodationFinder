@@ -1,5 +1,7 @@
 <?php
+  $keyword = $_GET['room'];
   session_start();
+  $_SESSION["appResID"] = $keyword;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,7 @@
 
 <body id="page-top">
 
-  <form action="loginAction.php" method="POST">
+  <form action="bookARoomAction.php" method="POST">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -76,7 +78,6 @@
               <tr>
                 <th><font color="white">Unit number</font></th>
                 <th><font color="white">Availability</font></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -101,13 +102,35 @@
                 <tr>
                   <th scope="row" class="number"><font color="white"><?php echo $opt['unitNo']?></font></th>
                   <td class="available"><font color="white"><?php echo $opt['availability']?></font></td>
-                  <td class="button"><font color="white"><button style="background-color:#F35119; color:white;
-                   display: inline;">Book this room</button></font></td>
                 </tr>
               <?php }?>
             </tbody>
           </table>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+          <div class="col-lg-8 align-self-baseline">
+            <div class="form-group">
+                <label class="sr-only" for="password">Unit Number</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><font color="white" size="+2.5"><i class="fa fa-bed"></i></font></div>
+                    <input type="number" min="1" name="unitNo" class="form-control" id="unitNo" placeholder="Enter the unit number" required autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="name">Required Date</label>
+                <p class="text-white-50 mb-4"><font color="white"> When do you need the residence by? </font></p>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><font color="white" size="+2.5"><i class="	far fa-calendar-alt"></i></font></div>
+                    <input type="date" name="reqDate" class="form-control" id="reqDate" required>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a href="landlordHome.html"><button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Book This Room</button></a>
+                </div>
+            </div>
+            <br><br>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+          </div>
       </div>
     </div>
   </header>
@@ -132,6 +155,8 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
+
+  <script src="roomAction.js"></script>
 
 </body>
 
