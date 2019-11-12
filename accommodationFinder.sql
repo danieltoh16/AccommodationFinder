@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `allocation`
+--
+
+CREATE TABLE `allocation` (
+  `fromDate` varchar(100) NOT NULL,
+  `duration` varchar(100) NOT NULL,
+  `endDate` varchar(100) NOT NULL,
+  `unitNo` varchar(100) NOT NULL,
+  `applyID` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `allocation`
+--
+
+INSERT INTO `allocation` (`fromDate`, `duration`, `endDate`, `unitNo`, `applyID`) VALUES
+('19-01-2019', '1 year', '19-01-2020', '1', 'APP-5cabb148ecd3d3.62079945'),
+('6-7-2019', '2 years', '6-8-2021', '2', 'APP-5cabb14d9bf098.23809809'),
+('12-12-2019', '3 years', '31-12-2022', '3', 'APP-5caed41df3c986.93355827');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `application`
 --
 
@@ -69,9 +92,9 @@ CREATE TABLE `residence` (
 --
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-1', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-1'),
-('RES-2', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-1'),
-('RES-3', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-1');
+('RES-5dcaabfe243d39.03936473', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-1'),
+('RES-5dcaac07b049e9.47285297', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-1'),
+('RES-5dcaac392e1ab9.74989776', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-1');
 
 
 -- --------------------------------------------------------
@@ -91,12 +114,12 @@ CREATE TABLE `unit` (
 --
 
 INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
-('RES-1', '1', 'available'),
-('RES-2', '1', 'available'),
-('RES-2', '2', 'available'),
-('RES-3', '1', 'available'),
-('RES-3', '2', 'available'),
-('RES-3', '3', 'available');
+('RES-5dcaabfe243d39.03936473', '1', 'available'),
+('RES-5dcaac07b049e9.47285297', '1', 'available'),
+('RES-5dcaac07b049e9.47285297', '2', 'available'),
+('RES-5dcaac392e1ab9.74989776', '1', 'available'),
+('RES-5dcaac392e1ab9.74989776', '2', 'available'),
+('RES-5dcaac392e1ab9.74989776', '3', 'available');
 
 -- --------------------------------------------------------
 
@@ -119,31 +142,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`staffID`, `usertype`, `username`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
-('ADM-1', 0, 'Admin', 'admin', 'AF Admin', '', ''),
-('', 1, 'Jason', '1', 'Jason', 'Jason', '1200');
+('ADM-5dcaab545694f5.03454957', 0, 'Admin', 'admin', 'AF Admin', '', ''),
+('ADM-5dcaaac561eb36.24525888', 0, 'adibraup', '123', 'Adib Raup', '', ''),
+('ADM-5dcaaad8270527.36885569', 0, 'danieltoh16', 'danieltoh16', 'Daniel Nicholas Figueras Toh', '', ''),
+('ADM-5dcaab04bbf6d9.05884211', 0, 'nicholasksetiadi', 'nk1', 'Nicholas Kelsey Setiadi', '', ''),
+('ADM-5dcaab71691e30.69422693', 0, 'yuechidongz', 'yc1', 'Yue QiDong', '', ''),
+('', 1, 'Jason', '1', 'Jason Jonas', 'jason@jason.mail', '1200'),
+('', 1, 'James', '10', 'James Bond', 'james@FBI.mail', '7500');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `allocation`
---
-
-CREATE TABLE `allocation` (
-  `fromDate` varchar(100) NOT NULL,
-  `duration` varchar(100) NOT NULL,
-  `endDate` varchar(100) NOT NULL,
-  `unitNo` varchar(100) NOT NULL,
-  `applyID` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `allocation`
---
-
-INSERT INTO `allocation` (`fromDate`, `duration`, `endDate`, `unitNo`, `applyID`) VALUES
-('19-01-2019', '1 year', '19-01-2020', '1', 'APP-5cabb148ecd3d3.62079945'),
-('6-7-2019', '2 years', '6-8-2021', '2', 'APP-5cabb14d9bf098.23809809'),
-('12-12-2019', '3 years', '31-12-2022', '3', 'APP-5caed41df3c986.93355827');
 
 /*--
 -- Indexes for dumped tables
