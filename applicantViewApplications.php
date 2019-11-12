@@ -76,6 +76,8 @@ session_start();
                 <th><font color="white">Required month</font></th>
                 <th><font color="white">Required year</font></th>
                 <th><font color="white">Application status</font></th>
+                <th><font color="white">Residence ID</font></th>
+                <th><font color="white">Unit number</font></th>
               </tr>
             </thead>
             <tbody>
@@ -102,6 +104,8 @@ session_start();
                   <td class="month"><font color="white"><?php echo $opt['reqMonth']?></font></td>
                   <td class="year"><font color="white"><?php echo $opt['reqYear']?></font></td>
                   <td class="status"><font color="white"><?php echo $opt['status']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['resID']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['unitNo']?></font></td>
                 </tr>
               <?php }?>
             </tbody>
