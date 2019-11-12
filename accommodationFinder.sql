@@ -69,10 +69,9 @@ CREATE TABLE `residence` (
 --
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-5caec0ceee50a8.60700779', 'HELP Residence', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur', '0', '1000', '600', 'Admin'),
-('RES-1', 'House', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
-('RES-2', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
-('RES-3', 'House', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'Admin');
+('RES-1', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-1'),
+('RES-2', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-1'),
+('RES-3', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-1');
 
 
 -- --------------------------------------------------------
@@ -121,18 +120,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`staffID`, `usertype`, `username`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
 ('ADM-1', 0, 'Admin', 'admin', 'AF Admin', '', ''),
-('', 1, 'Jason', '1', 'Jason', 'Jason', '1200'),
-('ADM-5caed2df820a45.98044678', 0, 'uniAdmin', 'uniAdmin1', '', 'H', ''),
-('', 1, 'App', '1234', 'John doe', 'Jdot', '1100'),
-('ADM-5ca7d8a10ec069.92281260', 0, 'P', 'P', 'P', '', ''),
-('ADM-5ca8dc8d641ef6.82278431', 0, 'Q', 'Q', 'Q', '', ''),
-('ADM-5cac3c6bce4b11.60856988', 0, 'Helpadmin', 'Test', 'Helpadmin', '', ''),
-('ADM-5ca8e215a53420.06095379', 0, 'Name', 'Word', 'Bane', '', ''),
-('', 1, 'Hs', 'test', 'Hahshs', 'Hshshs', '2000'),
-('', 1, 'James', 'Test', 'Abbb', 'Bbdbb', '3500'),
-('ADM-5caad44b79f9c1.57574997', 0, 'New', 'Check', 'Ok', '', ''),
-('ADM-5caad4ce5d9a87.93408646', 0, 'L', 'L', 'L', '', ''),
-('ADM-5cac3da1d6a616.74569864', 0, '2', '2', '2', '', '');
+('', 1, 'Jason', '1', 'Jason', 'Jason', '1200');
 
 -- --------------------------------------------------------
 
