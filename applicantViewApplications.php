@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>Applicant Homepage</title>
+  <title>View Applications - Applicant</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +28,7 @@
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="css/creative3.min.css" rel="stylesheet">
+  <link href="css/creative3.5.min.css" rel="stylesheet">
 
 </head>
 
@@ -41,13 +44,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
+            <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -62,16 +65,53 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold">Welcome back</h1>
-          <h1 class="text-uppercase text-white font-weight-bold">Applicant!</h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">List of applications
+            made by <?php echo $_SESSION["Username"]; ?></font></h1>
           <hr class="divider my-4">
         </div>
-        <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5"> What would you like to do today?</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Search for an accomodation</a>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><font color="white">Date of application</font></th>
+                <th><font color="white">Required month</font></th>
+                <th><font color="white">Required year</font></th>
+                <th><font color="white">Application status</font></th>
+                <th><font color="white">Residence ID</font></th>
+                <th><font color="white">Unit number</font></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+
+              $conn = new mysqli($servername, $username, $password);
+
+              if ($conn->connect_error) {
+                  echo("Connection failed: " . $conn->connect_error);
+              }
+              $conn->select_db("accommodationfinder");
+
+              $uName = $_SESSION["Username"];
+
+              $lq = "SELECT * FROM application WHERE applyUName = '$uName'";
+              $res = $conn->query($lq);
+              foreach($res as $opt){
+              ?>
+                <tr>
+                  <th scope="row" class="date"><font color="white"><?php echo $opt['applyDate']?></font></th>
+                  <td class="month"><font color="white"><?php echo $opt['reqMonth']?></font></td>
+                  <td class="year"><font color="white"><?php echo $opt['reqYear']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['status']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['resID']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['unitNo']?></font></td>
+                </tr>
+              <?php }?>
+            </tbody>
+          </table>
           <br><br>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantViewApplications.html">View your past applications</a>
-        </div>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.php">Back</a>
       </div>
     </div>
   </header>

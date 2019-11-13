@@ -1,5 +1,7 @@
 <?php
   $keyword = $_GET['search'];
+  session_start();
+  $_SESSION["resName"] = $keyword;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +14,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>Search Results for Keyword</title>
+  <title>Search Results for "<?php echo $_SESSION["resName"] ?>"</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,6 +36,8 @@
 
 <body id="page-top">
 
+  <form action="bookARoom.php" method="get">
+
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
@@ -44,13 +48,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantHome.html">Home</a>
+            <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -65,50 +69,71 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Search results for "keyword"</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Search results for "<?php echo $_SESSION["resName"] ?>"</font></h1>
           <hr class="divider my-4">
         </div>
-          <table class="table table-hover" border="0" width="200%">
+          <table class="table table-hover" border="0" width="300%">
             <thead>
               <tr>
                 <th><font color="white">Residence ID</font></th>
+                <th><font color="white">Residence Name</font></th>
                 <th><font color="white">Location</font></th>
                 <th><font color="white">Number of rooms</font></th>
                 <th><font color="white">Size per room</font></th>
                 <th><font color="white">Price</font></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               <?php
-              $servername = "localhost";
-              $username = "root";
-              $password = "";
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
 
-              $conn = new mysqli($servername, $username, $password);
+                $conn = new mysqli($servername, $username, $password);
 
-              if ($conn->connect_error) {
-                  echo("Connection failed: " . $conn->connect_error);
-              }
-              $conn->select_db("accommodationfinder");
+                if ($conn->connect_error) {
+                    echo("Connection failed: " . $conn->connect_error);
+                }
+                $conn->select_db("accommodationfinder");
 
-              $lq = "SELECT * FROM residence WHERE address LIKE '$keyword'";
-              $res = $conn->query($lq);
-              foreach($res as $opt){
+                $searchKeyword = "%".$_SESSION["resName"]."%";
+
+                $lq = "SELECT * FROM residence WHERE resName LIKE '$searchKeyword'
+                OR address LIKE '$searchKeyword' OR resID LIKE '$searchKeyword'";
+                $res = $conn->query($lq);
+                foreach($res as $opt){
               ?>
                 <tr>
-                  <th scope="row" class="id"><font color="white"><?php echo $opt['resID']?></font></th>
+                  <th scope="row" name="resid" class="resid" id="resid"><font color="white">
+                    <?php echo $opt['resID']?></font></th>
+                  <td class="name"><font color="white"><?php echo $opt['resName']?></font></td>
                   <td class="location"><font color="white"><?php echo $opt['address']?></font></td>
                   <td class="norooms"><font color="white"><?php echo $opt['numUnits']?></font></td>
                   <td class="sizeroom"><font color="white"><?php echo $opt['sizePerUnit']?></font></td>
                   <td class="price"><font color="white"><?php echo $opt['monthlyRental']?></font></td>
-                  <td class="button"><a href="bookARoom.html"><font color="white"><button style="background-color:#F35119;
-                  color:white;">Book a room</button></font></a></td>
                 </tr>
               <?php }?>
             </tbody>
           </table>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+          <div class="col-lg-8 align-self-baseline">
+            <p class="text-white-75 font-weight-light mb-5"><font size="3" color="white"><b>Enter the ID of the
+              residence you want to apply for (copy the residence ID and paste it below)</b></font></p>
+            <div class="form-group has-danger">
+                <label class="sr-only" for="search">Search</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input type="search" name="room" class="form-control" id="room"
+                    placeholder="Type here..." required autofocus ></input>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a href="bookARoom.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success">
+                      <i class="fas fa-sign-in-alt"></i>&nbsp  Search</button></a>
+                </div>
+            </div><br>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+          </div>
       </div>
     </div>
   </header>

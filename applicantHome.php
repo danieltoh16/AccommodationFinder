@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +11,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Title displayed on the tabs -->
-  <title>Landlord Homepage</title>
+  <!-- Title displayed on the tab -->
+  <title>Applicant Homepage</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +28,7 @@
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="css/creative4.min.css" rel="stylesheet">
+  <link href="css/creative3.min.css" rel="stylesheet">
 
 </head>
 
@@ -44,10 +47,10 @@
             <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="createAccommodation.html">Create residence</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="landlordViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -63,14 +66,14 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <h1 class="text-uppercase text-white font-weight-bold">Welcome back</h1>
-          <h1 class="text-uppercase text-white font-weight-bold">Landlord!</h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><?php echo $_SESSION["Username"]; ?></h1>
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5"> What would you like to do today?</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="createAccommodation.html">Create a profile for a residence</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Search for an accomodation</a>
           <br><br>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="landlordViewApplications.html">View submitted applications for residences</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantViewApplications.php">View your past applications</a>
         </div>
       </div>
     </div>

@@ -43,13 +43,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantHome.html">Home</a>
+            <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#page-top">Search residences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -68,7 +68,7 @@
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5">Enter the address of a residence to search for an accommodation in the search bar below</p>
+          <p class="text-white-75 font-weight-light mb-5">Enter any keyword to search for a residence</p>
           <div class="form-group has-danger">
               <label class="sr-only" for="search">Search</label>
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -78,12 +78,12 @@
           <div class="row" style="padding-top: 1rem">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                  <a href="accommodationList.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt">
-                  </i>&nbsp  Search</button></a>
+                  <a href="accommodationList.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success">
+                    <i class="fas fa-sign-in-alt"></i>&nbsp  Search</button></a>
               </div>
           </div>
           <br><br>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.html">Back</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantHome.php">Back</a>
         </div>
       </div>
     </div>
@@ -108,8 +108,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
-
-  <script src="accommodationAction.js"></script>
 
 </body>
 
