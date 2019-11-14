@@ -47,7 +47,7 @@
             <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.html">Search residences</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
@@ -71,7 +71,7 @@
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5"> What would you like to do today?</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Search for an accomodation</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.html">Search for an accomodation</a>
           <br><br>
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="applicantViewApplications.php">View your past applications</a>
         </div>

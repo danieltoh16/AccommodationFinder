@@ -1,7 +1,6 @@
 <?php
-  $keyword = $_GET['search'];
   session_start();
-  $_SESSION["resName"] = $keyword;
+  $_SESSION["resName"] = $_SESSION["SearchKey"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +35,7 @@
 
 <body id="page-top">
 
-  <form action="bookARoom.php" method="get">
+  <form action="retrieveRoomAction.php" method="post">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -51,7 +50,7 @@
             <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.html">Search residences</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
@@ -128,15 +127,15 @@
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <a href="bookARoom.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success">
-                      <i class="fas fa-sign-in-alt"></i>&nbsp  Search</button></a>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Search</button>
                 </div>
             </div><br>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.html">Back</a>
           </div>
       </div>
     </div>
   </header>
+</form>
 
   <!-- Footer -->
   <!-- This section shows the copyright of the website-->
@@ -157,8 +156,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
-
-  <script src="accommodationAction.js"></script>
 
 </body>
 

@@ -47,7 +47,7 @@ session_start();
             <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.html">Search residences</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>

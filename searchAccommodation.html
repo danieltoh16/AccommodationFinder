@@ -31,7 +31,7 @@
 
 <body id="page-top">
 
-  <form action="accommodationList.php" method="get">
+  <form action="searchResidenceAction.php" method="post">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -78,8 +78,7 @@
           <div class="row" style="padding-top: 1rem">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                  <a href="accommodationList.php?id=<?php echo $option['search']; ?>"><button type="submit" class="btn btn-success">
-                    <i class="fas fa-sign-in-alt"></i>&nbsp  Search</button></a>
+                  <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Search</button>
               </div>
           </div>
           <br><br>

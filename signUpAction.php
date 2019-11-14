@@ -19,7 +19,7 @@ $email = $_POST['email'];
 $monthIncome = $_POST['mincome'];
 
 $wrongMsg = "Sign up unsuccessful. Please try again.";
-$msg = "Sign up successful. Proceed to login.";
+$msg = "Sign up successful. Redirecting to login.";
 $haveUsername = "Username is taken, please try another one";
 $haveEmail = "Email is taken, please try another one";
 
@@ -36,7 +36,7 @@ if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
   if ($checkerU->num_rows > 0){
     echo "<SCRIPT type=\"text/javascript\">alert('$haveUsername');</SCRIPT>";
   	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
-  } else if ($checkerE->num_rows > 0) {
+  } else if ($checkerE->num_rows > 0){
     echo "<SCRIPT type=\"text/javascript\">alert('$haveEmail');</SCRIPT>";
   	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
   } else {
