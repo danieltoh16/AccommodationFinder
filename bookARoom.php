@@ -1,7 +1,5 @@
 <?php
-  $keyword = $_GET['room'];
   session_start();
-  $_SESSION["appResID"] = $keyword;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +49,7 @@
             <a class="nav-link js-scroll-trigger" href="applicantHome.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="searchAccommodation.php">Search residences</a>
+            <a class="nav-link js-scroll-trigger" href="searchAccommodation.html">Search residences</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="applicantViewApplications.php">View applications</a>
@@ -129,7 +127,7 @@
                 </div>
             </div>
             <br><br>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.php">Back</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.html">Back</a>
           </div>
       </div>
     </div>
@@ -155,8 +153,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
-
-  <script src="roomAction.js"></script>
 
 </body>
 

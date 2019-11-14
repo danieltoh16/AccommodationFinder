@@ -30,7 +30,6 @@ $checkUsername = "SELECT * FROM users WHERE username = ('$uName')";
 $checkerU = $conn -> query($checkUsername);
 $checkEmail = "SELECT * FROM users WHERE email = ('$email')";
 $checkerE = $conn -> query($checkEmail);
-$userExists = False;
 
 if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
   if ($checkerU->num_rows > 0){

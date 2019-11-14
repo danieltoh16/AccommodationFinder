@@ -42,7 +42,7 @@ if ($month == 1){
   $month = "October";
 } else if ($month == 11){
   $month = "November";
-} else{
+} else {
   $month = "December";
 }
 $year = $reqdate[0];
@@ -52,18 +52,28 @@ $applicant = $_SESSION["Username"];
 $residence = $_SESSION["appResID"];
 $unumber = $_POST['unitNo'];
 
+$searchingKey = $_SESSION["appResID"];
+
 $wrongMsg = "Application for this room unsuccessful. Please try again.";
 $msg = "Application for this room successfully created. Returning to applicant homepage";
+$roomMsg = "Wrong room number entered. Please try again.";
 
 $sql = "INSERT INTO application (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`)
 VALUES ('$appID', '$appDate', '$month', '$year', '$status', '$applicant', '$residence', '$unumber')";
+$checkSQL = "SELECT unitNo FROM unit WHERE resID LIKE '$residence' AND unitNo LIKE '$unumber'";
+$checker = $conn -> query($checkSQL);
 
 if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
-  echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
-  echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
+    if ($checker->num_rows > 0){
+      echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
+      echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
+    } else {
+      echo "<SCRIPT type=\"text/javascript\">alert('$roomMsg');</SCRIPT>";
+      echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php?id=$searchingKey';</SCRIPT>");
+    }
 } else {
   echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
-  echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php';</SCRIPT>");
+  echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php?id=$searchingKey';</SCRIPT>");
 }
 
 $conn->close();
