@@ -31,7 +31,6 @@ $checkerU = $conn -> query($checkUsername);
 $checkEmail = "SELECT * FROM users WHERE email = ('$email')";
 $checkerE = $conn -> query($checkEmail);
 
-if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
   if ($checkerU->num_rows > 0){
     echo "<SCRIPT type=\"text/javascript\">alert('$haveUsername');</SCRIPT>";
   	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
@@ -39,14 +38,16 @@ if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
     echo "<SCRIPT type=\"text/javascript\">alert('$haveEmail');</SCRIPT>";
   	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
   } else {
-    echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
+    if (($conn->query($sql) === TRUE)||($result && $result->num_rows)){
+      echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
+      echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");
+    } else {
+      echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
+	    echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
+    }
   }
-}
-else {
-	echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
-	echo("<SCRIPT type=\"text/javascript\">window.location = 'signUp.html';</SCRIPT>");
-}
+
+
 
 $conn->close();
 
