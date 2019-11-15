@@ -63,16 +63,16 @@ VALUES ('$appID', '$appDate', '$month', '$year', '$status', '$applicant', '$resi
 $checkSQL = "SELECT unitNo FROM unit WHERE resID LIKE '$residence' AND unitNo LIKE '$unumber'";
 $checker = $conn -> query($checkSQL);
 
-if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
-    if ($checker->num_rows > 0){
-      echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
-      echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
-    } else {
-      echo "<SCRIPT type=\"text/javascript\">alert('$roomMsg');</SCRIPT>";
-      echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php?id=$searchingKey';</SCRIPT>");
-    }
+if ($checker->num_rows > 0){
+  if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
+    echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
+  } else {
+    echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php?id=$searchingKey';</SCRIPT>");
+  }
 } else {
-  echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
+  echo "<SCRIPT type=\"text/javascript\">alert('$roomMsg');</SCRIPT>";
   echo("<SCRIPT type=\"text/javascript\">window.location = 'bookARoom.php?id=$searchingKey';</SCRIPT>");
 }
 
