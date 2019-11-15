@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 $conn->select_db("accommodationfinder");
 
-$uniqID = uniqid("RES-",true);
+$uniqID = uniqid("RES-",false);
 $name = $_POST['resName'];
 $address = $_POST['address'];
 $numUnits = $_POST['noOfRooms'];

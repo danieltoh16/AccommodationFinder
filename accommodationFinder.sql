@@ -41,9 +41,9 @@ CREATE TABLE `allocation` (
 --
 
 INSERT INTO `allocation` (`fromDate`, `duration`, `endDate`, `unitNo`, `applyID`) VALUES
-('19-01-2019', '1 year', '19-01-2020', '1', 'APP-5cabb148ecd3d3.62079945'),
-('6-7-2019', '2 years', '6-8-2021', '2', 'APP-5cabb14d9bf098.23809809'),
-('12-12-2019', '3 years', '31-12-2022', '3', 'APP-5caed41df3c986.93355827');
+('19-01-2019', '1 year', '19-01-2020', '1', 'APP-5dce3ef54958e'),
+('6-7-2019', '2 years', '6-8-2021', '2', 'APP-5dce3f04628fa'),
+('12-12-2019', '3 years', '31-12-2022', '3', 'APP-5dce3f10dece7');
 
 -- --------------------------------------------------------
 
@@ -59,17 +59,18 @@ CREATE TABLE `application` (
   `status` varchar(100) NOT NULL,
   `applyUName` varchar(100) NOT NULL,
   `resID` varchar(100) NOT NULL,
-  `unitNo` varchar(100) NOT NULL
+  `unitNo` varchar(100) NOT NULL,
+  `duration` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `application`
 --
 
-INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`) VALUES
-('APP-5cabb148ecd3d3.62079945', '2018-03-18', 'January', '2020', 'New', 'Jason', 'RES-5dcaabfe243d39.03936473', '1'),
-('APP-5cabb14d9bf098.23809809', '2018-08-19', 'February', '2020', 'New', 'James', 'RES-5dcaac07b049e9.47285297', '2'),
-('APP-5cac331177c711.88469473', '2019-04-09', 'April', '2020', 'New', 'Jason', 'RES-5dcaac392e1ab9.74989776', '3');
+INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`, `duration`) VALUES
+('APP-5dce3ef54958e', '2018-03-18', 'January', '2020', 'New', 'Jason', 'RES-5dce3f330c2f3', '1', '12 months'),
+('APP-5dce3f04628fa', '2018-08-19', 'February', '2020', 'New', 'James', 'RES-5dce3f3daeac8', '2', '12 months'),
+('APP-5dce3f10dece7', '2019-04-09', 'April', '2020', 'New', 'Jason', 'RES-5dce3f4873062', '3', '18 months');
 
 -- --------------------------------------------------------
 
@@ -92,9 +93,9 @@ CREATE TABLE `residence` (
 --
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-5dcaabfe243d39.03936473', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-5dcaab545694f5.03454957'),
-('RES-5dcaac07b049e9.47285297', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-5dcaab545694f5.03454957'),
-('RES-5dcaac392e1ab9.74989776', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-5dcaab545694f5.03454957');
+('RES-5dce3f330c2f3', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-5dce404781526'),
+('RES-5dce3f3daeac8', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-5dce404781526'),
+('RES-5dce3f4873062', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-5dce40626e052');
 
 
 -- --------------------------------------------------------
@@ -114,12 +115,12 @@ CREATE TABLE `unit` (
 --
 
 INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
-('RES-5dcaabfe243d39.03936473', '1', 'available'),
-('RES-5dcaac07b049e9.47285297', '1', 'available'),
-('RES-5dcaac07b049e9.47285297', '2', 'available'),
-('RES-5dcaac392e1ab9.74989776', '1', 'available'),
-('RES-5dcaac392e1ab9.74989776', '2', 'available'),
-('RES-5dcaac392e1ab9.74989776', '3', 'available');
+('RES-5dce3f330c2f3', '1', 'available'),
+('RES-5dce3f3daeac8', '1', 'available'),
+('RES-5dce3f3daeac8', '2', 'available'),
+('RES-5dce3f4873062', '1', 'available'),
+('RES-5dce3f4873062', '2', 'available'),
+('RES-5dce3f4873062', '3', 'available');
 
 -- --------------------------------------------------------
 
@@ -142,11 +143,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`staffID`, `usertype`, `username`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
-('ADM-5dcaab545694f5.03454957', 0, 'Admin', 'admin', 'AF Admin', '', ''),
-('ADM-5dcaaac561eb36.24525888', 0, 'adibraup', '123', 'Adib Raup', '', ''),
-('ADM-5dcaaad8270527.36885569', 0, 'danieltoh16', 'danieltoh16', 'Daniel Nicholas Figueras Toh', '', ''),
-('ADM-5dcaab04bbf6d9.05884211', 0, 'nicholasksetiadi', 'nk1', 'Nicholas Kelsey Setiadi', '', ''),
-('ADM-5dcaab71691e30.69422693', 0, 'yuechidongz', 'yc1', 'Yue QiDong', '', ''),
+('ADM-5dce404781526', 0, 'Admin', 'admin', 'AF Admin', '', ''),
+('ADM-5dce4052b084c', 0, 'adibraup', '123', 'Adib Raup', '', ''),
+('ADM-5dce40626e052', 0, 'danieltoh16', 'danieltoh16', 'Daniel Nicholas Figueras Toh', '', ''),
+('ADM-5dce406cb212e', 0, 'nicholasksetiadi', 'nk1', 'Nicholas Kelsey Setiadi', '', ''),
+('ADM-5dce407653885', 0, 'yuechidongz', 'yc1', 'Yue QiDong', '', ''),
 ('', 1, 'Jason', '1', 'Jason Jonas', 'jason@jason.mail', '1200'),
 ('', 1, 'James', '10', 'James Bond', 'james@FBI.mail', '7500');
 

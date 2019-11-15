@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 $conn->select_db("accommodationfinder");
 
-$appID = uniqid("APP-",true);
+$appID = uniqid("APP-",false);
 $appDate = date('Y-m-d');
 
 $date = $_POST['reqDate'];
@@ -51,6 +51,7 @@ $status = "New";
 $applicant = $_SESSION["Username"];
 $residence = $_SESSION["appResID"];
 $unumber = $_POST['unitNo'];
+$duration = $_POST['duration'];
 
 $searchingKey = $_SESSION["appResID"];
 
@@ -58,8 +59,8 @@ $wrongMsg = "Application for this room unsuccessful. Please try again.";
 $msg = "Application for this room successfully created. Returning to applicant homepage";
 $roomMsg = "Wrong room number entered. Please try again.";
 
-$sql = "INSERT INTO application (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`)
-VALUES ('$appID', '$appDate', '$month', '$year', '$status', '$applicant', '$residence', '$unumber')";
+$sql = "INSERT INTO application (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`, `duration`)
+VALUES ('$appID', '$appDate', '$month', '$year', '$status', '$applicant', '$residence', '$unumber', '$duration')";
 $checkSQL = "SELECT unitNo FROM unit WHERE resID LIKE '$residence' AND unitNo LIKE '$unumber'";
 $checker = $conn -> query($checkSQL);
 

@@ -120,6 +120,17 @@
                     <input type="date" name="reqDate" class="form-control" id="reqDate" required>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="sr-only" for="name">Duration</label>
+                <p class="text-white-50 mb-4"><font color="white"> How long do you want to rent this residence for? </font></p>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><font color="white" size="+2.5"><i class="	far fa-calendar"></i></font></div>
+                    <select name="duration" class="form-control" required>
+                      <option value="12 months">12 Months</option>
+                      <option value="18 months">18 Months</option>
+                    </select>
+                </div>
+            </div>
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">

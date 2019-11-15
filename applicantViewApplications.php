@@ -78,6 +78,7 @@ session_start();
                 <th><font color="white">Application status</font></th>
                 <th><font color="white">Residence ID</font></th>
                 <th><font color="white">Unit number</font></th>
+                <th><font color="white">Duration applied for</font></th>
               </tr>
             </thead>
             <tbody>
@@ -106,6 +107,7 @@ session_start();
                   <td class="status"><font color="white"><?php echo $opt['status']?></font></td>
                   <td class="status"><font color="white"><?php echo $opt['resID']?></font></td>
                   <td class="status"><font color="white"><?php echo $opt['unitNo']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['duration']?></font></td>
                 </tr>
               <?php }?>
             </tbody>
