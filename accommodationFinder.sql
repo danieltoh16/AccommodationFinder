@@ -31,7 +31,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `allocation` (
   `fromDate` varchar(100) NOT NULL,
   `duration` varchar(100) NOT NULL,
-  `endDate` varchar(100) NOT NULL,
   `unitNo` varchar(100) NOT NULL,
   `applyID` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -40,10 +39,10 @@ CREATE TABLE `allocation` (
 -- Dumping data for table `allocation`
 --
 
-INSERT INTO `allocation` (`fromDate`, `duration`, `endDate`, `unitNo`, `applyID`) VALUES
-('19-01-2019', '1 year', '19-01-2020', '1', 'APP-5dce3ef54958e'),
-('6-7-2019', '2 years', '6-8-2021', '2', 'APP-5dce3f04628fa'),
-('12-12-2019', '3 years', '31-12-2022', '3', 'APP-5dce3f10dece7');
+INSERT INTO `allocation` (`fromDate`, `duration`, `unitNo`, `applyID`) VALUES
+('19-01-2019', '1 year', '1', 'APP-5dce3ef54958e'),
+('6-7-2019', '2 years', '2', 'APP-5dce3f04628fa'),
+('12-12-2019', '3 years', '3', 'APP-5dce3f10dece7');
 
 -- --------------------------------------------------------
 
