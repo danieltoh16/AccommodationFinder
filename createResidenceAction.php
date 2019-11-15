@@ -5,14 +5,13 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
+$dbName = "accommodationfinder";
 
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbName);
 
 if ($conn->connect_error) {
     echo("Connection failed: " . $conn->connect_error);
 }
-
-$conn->select_db("accommodationfinder");
 
 $uniqID = uniqid("RES-",false);
 $name = $_POST['resName'];
@@ -20,12 +19,21 @@ $address = $_POST['address'];
 $numUnits = $_POST['noOfRooms'];
 $sizePerUnit = $_POST['roomSize'];
 $monthlyRental = $_POST['rentalPrice'];
-$staff = $_SESSION["StaffID"];
+$username = $_SESSION["Username"];
 
 $wrongMsg = "Creating residence profile unsuccessful. Please try again.";
 $msg = "Creating residence profile successful. Returning to landlord homepage.";
 $haveName = "Residence Name already exists in the database, please try again";
 $haveAddr = "Residence Address already exists in the database, please try again";
+
+$getStaffID = "SELECT * FROM users WHERE username = ('$username')";
+$checkerStaffID = $conn -> query($getStaffID);
+if ($checkerStaffID->num_rows>0){
+  while ($row = $checkerStaffID->fetch_assoc()){
+    $staffID = $row["staffID"];
+  }
+}
+$staff = $staffID;
 
 $sql = "INSERT INTO residence (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`)
 VALUES ('$uniqID', '$name', '$address', '$numUnits', '$sizePerUnit', '$monthlyRental', '$staff')";

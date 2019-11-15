@@ -31,9 +31,6 @@ if ($result && $result->num_rows) {
 			echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.php';</SCRIPT>");
 		} else if($utype == 1){
       $_SESSION["Username"] = "$uname";
-      $sqlGetID = "SELECT staffID FROM users WHERE username = ('$uname') AND password = ('$pass')";
-      $resultID = $conn -> query($sqlGetID);
-      $_SESSION["StaffID"] = $row["staffID"];
 			echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
 		} else{
 			echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";

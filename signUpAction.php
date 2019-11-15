@@ -47,8 +47,6 @@ $checkerE = $conn -> query($checkEmail);
     }
   }
 
-
-
 $conn->close();
 
 ?>
