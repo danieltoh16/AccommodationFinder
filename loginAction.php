@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -25,13 +27,14 @@ if ($result && $result->num_rows) {
 	foreach ($result2 as  $value) {
 		$utype=$value['usertype'];
 		if ($utype == 0) {
+      $_SESSION["Username"] = "$uname";
 			echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordHome.php';</SCRIPT>");
-      session_start();
-      $_SESSION["Username"] = "$uname";
 		} else if($utype == 1){
-			echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
-      session_start();
       $_SESSION["Username"] = "$uname";
+      $sqlGetID = "SELECT staffID FROM users WHERE username = ('$uname') AND password = ('$pass')";
+      $resultID = $conn -> query($sqlGetID);
+      $_SESSION["StaffID"] = $row["staffID"];
+			echo("<SCRIPT type=\"text/javascript\">window.location = 'applicantHome.php';</SCRIPT>");
 		} else{
 			echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
       echo("<SCRIPT type=\"text/javascript\">window.location = 'login.html';</SCRIPT>");

@@ -92,9 +92,9 @@ CREATE TABLE `residence` (
 --
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-5dcaabfe243d39.03936473', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-1'),
-('RES-5dcaac07b049e9.47285297', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-1'),
-('RES-5dcaac392e1ab9.74989776', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-1');
+('RES-5dcaabfe243d39.03936473', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-5dcaab545694f5.03454957'),
+('RES-5dcaac07b049e9.47285297', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-5dcaab545694f5.03454957'),
+('RES-5dcaac392e1ab9.74989776', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-5dcaab545694f5.03454957');
 
 
 -- --------------------------------------------------------
