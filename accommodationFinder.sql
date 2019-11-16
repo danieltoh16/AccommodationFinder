@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `allocation` (
+  `allocateID` varchar(100) NOT NULL,
   `fromDate` varchar(100) NOT NULL,
   `duration` varchar(100) NOT NULL,
-  `unitNo` varchar(100) NOT NULL,
+  `unitID` varchar(100) NOT NULL,
   `applyID` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -39,10 +40,10 @@ CREATE TABLE `allocation` (
 -- Dumping data for table `allocation`
 --
 
-INSERT INTO `allocation` (`fromDate`, `duration`, `unitNo`, `applyID`) VALUES
-('19-01-2019', '1 year', '1', 'APP-5dce3ef54958e'),
-('6-7-2019', '2 years', '2', 'APP-5dce3f04628fa'),
-('12-12-2019', '3 years', '3', 'APP-5dce3f10dece7');
+INSERT INTO `allocation` (`allocateID`, `fromDate`, `duration`, `unitID`, `applyID`) VALUES
+('ALC-5dcf849e9c072', '19-1-2019', '12 months', 'UNIT-5dcf702a6dba7', 'APP-5dce3ef54958e'),
+('ALC-5dcf84ae7c9be', '6-7-2019', '12 months', 'UNIT-5dcf719db95a8', 'APP-5dce3f04628fa'),
+('ALC-5dcf84b76c416', '12-12-2019', '18 months', 'UNIT-5dcf71e0c99ca', 'APP-5dce3f10dece7');
 
 -- --------------------------------------------------------
 
@@ -91,10 +92,10 @@ CREATE TABLE `residence` (
 -- Dumping data for table `residence`
 --
 
-INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`) VALUES
-('RES-5dce3f330c2f3', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'ADM-5dce404781526'),
-('RES-5dce3f3daeac8', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'ADM-5dce404781526'),
-('RES-5dce3f4873062', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'ADM-5dce40626e052');
+INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `username`) VALUES
+('RES-5dce3f330c2f3', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
+('RES-5dce3f3daeac8', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
+('RES-5dce3f4873062', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'Admin');
 
 
 -- --------------------------------------------------------
@@ -104,6 +105,7 @@ INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit
 --
 
 CREATE TABLE `unit` (
+  `unitID` varchar(100) NOT NULL,
   `resID` varchar(100) NOT NULL,
   `unitNo` varchar(100) NOT NULL,
   `availability` varchar(100) NOT NULL
@@ -113,13 +115,13 @@ CREATE TABLE `unit` (
 -- Dumping data for table `unit`
 --
 
-INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
-('RES-5dce3f330c2f3', '1', 'available'),
-('RES-5dce3f3daeac8', '1', 'available'),
-('RES-5dce3f3daeac8', '2', 'available'),
-('RES-5dce3f4873062', '1', 'available'),
-('RES-5dce3f4873062', '2', 'available'),
-('RES-5dce3f4873062', '3', 'available');
+INSERT INTO `unit` (`unitID`, `resID`, `unitNo`, `availability`) VALUES
+('UNIT-5dcf702a6dba7', 'RES-5dce3f330c2f3', '1', 'booked'),
+('UNIT-5dcf71905d423', 'RES-5dce3f3daeac8', '1', 'available'),
+('UNIT-5dcf719db95a8', 'RES-5dce3f3daeac8', '2', 'booked'),
+('UNIT-5dcf71bc477ef', 'RES-5dce3f4873062', '1', 'available'),
+('UNIT-5dcf71ce0eb10', 'RES-5dce3f4873062', '2', 'available'),
+('UNIT-5dcf71e0c99ca', 'RES-5dce3f4873062', '3', 'booked');
 
 -- --------------------------------------------------------
 
@@ -128,9 +130,8 @@ INSERT INTO `unit` (`resID`, `unitNo`, `availability`) VALUES
 --
 
 CREATE TABLE `users` (
-  `staffID` varchar(100),
-  `usertype` int(100) NOT NULL,
   `username` varchar(100) NOT NULL,
+  `usertype` int(2) NOT NULL,
   `password` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(100),
@@ -141,14 +142,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`staffID`, `usertype`, `username`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
-('ADM-5dce404781526', 0, 'Admin', 'admin', 'AF Admin', '', ''),
-('ADM-5dce4052b084c', 0, 'adibraup', '123', 'Adib Raup', '', ''),
-('ADM-5dce40626e052', 0, 'danieltoh16', 'danieltoh16', 'Daniel Nicholas Figueras Toh', '', ''),
-('ADM-5dce406cb212e', 0, 'nicholasksetiadi', 'nk1', 'Nicholas Kelsey Setiadi', '', ''),
-('ADM-5dce407653885', 0, 'yuechidongz', 'yc1', 'Yue QiDong', '', ''),
-('', 1, 'Jason', '1', 'Jason Jonas', 'jason@jason.mail', '1200'),
-('', 1, 'James', '10', 'James Bond', 'james@FBI.mail', '7500');
+INSERT INTO `users` (`username`, `usertype`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
+('Admin', 0, 'admin', 'AF Admin', '', ''),
+('Jason', 1, '1', 'Jason Jonas', 'jason@jason.mail', '1200'),
+('James', 1, '10', 'James Bond', 'james@FBI.mail', '7500');
 
 -- --------------------------------------------------------
 

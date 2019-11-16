@@ -30,13 +30,13 @@ $getStaffID = "SELECT * FROM users WHERE username = ('$username')";
 $checkerStaffID = $conn -> query($getStaffID);
 if ($checkerStaffID->num_rows>0){
   while ($row = $checkerStaffID->fetch_assoc()){
-    $staffID = $row["staffID"];
+    $getUserName = $row["username"];
   }
 }
-$staff = $staffID;
+$getUName = $getUserName;
 
 $sql = "INSERT INTO residence (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`)
-VALUES ('$uniqID', '$name', '$address', '$numUnits', '$sizePerUnit', '$monthlyRental', '$staff')";
+VALUES ('$uniqID', '$name', '$address', '$numUnits', '$sizePerUnit', '$monthlyRental', '$getUName')";
 
 $checkResName = "SELECT * FROM residence WHERE resName = ('$name')";
 $checkerName = $conn -> query($checkResName);
