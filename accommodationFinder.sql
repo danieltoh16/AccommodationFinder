@@ -33,7 +33,10 @@ CREATE TABLE `allocation` (
   `fromDate` varchar(100) NOT NULL,
   `duration` varchar(100) NOT NULL,
   `unitID` varchar(100) NOT NULL,
-  `applyID` varchar(100) NOT NULL
+  `applyID` varchar(100) NOT NULL,
+  PRIMARY KEY (`allocateID`),
+  FOREIGN KEY (`unitID`) REFERENCES unit(`unitID`),
+  FOREIGN KEY (`applyID`) REFERENCES application(`applyID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -60,8 +63,11 @@ CREATE TABLE `application` (
   `applyUName` varchar(100) NOT NULL,
   `resID` varchar(100) NOT NULL,
   `unitNo` varchar(100) NOT NULL,
-  `duration` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `duration` varchar(100) NOT NULL,
+  PRIMARY KEY (`applyID`),
+  FOREIGN KEY (`applyUName`) REFERENCES users(`username`),
+  FOREIGN KEY (`resID`) REFERENCES residence(`resID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `application`
@@ -85,8 +91,10 @@ CREATE TABLE `residence` (
   `numUnits` varchar(100) NOT NULL,
   `sizePerUnit` varchar(100) NOT NULL,
   `monthlyRental` varchar(100) NOT NULL,
-  `staffID` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `username` varchar(100) NOT NULL,
+  PRIMARY KEY (`resID`),
+  FOREIGN KEY (`username`) REFERENCES users(`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `residence`
@@ -108,8 +116,10 @@ CREATE TABLE `unit` (
   `unitID` varchar(100) NOT NULL,
   `resID` varchar(100) NOT NULL,
   `unitNo` varchar(100) NOT NULL,
-  `availability` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `availability` varchar(100) NOT NULL,
+  PRIMARY KEY (`unitID`),
+  FOREIGN KEY (`resID`) REFERENCES residence(`resID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `unit`
@@ -135,7 +145,8 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(100),
-  `monthlyIncome` varchar(100)
+  `monthlyIncome` varchar(100),
+  PRIMARY KEY (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -148,55 +159,6 @@ INSERT INTO `users` (`username`, `usertype`, `password`, `fullname`, `email`, `m
 ('James', 1, '10', 'James Bond', 'james@FBI.mail', '7500');
 
 -- --------------------------------------------------------
-
-/*--
--- Indexes for dumped tables
---
-
--- For this part the script is inaccurate, manually assign primary keys and secondary keys with reference to this script in PHPMyAdmin database
--- DO NOT UNCOMMENT OR THIS SCRIPT WILL RUN WITH ERRORS
-
---
--- Indexes for table `application`
---
-ALTER TABLE `application`
-  ADD PRIMARY KEY (`applyID`);
-  ADD FOREIGN KEY (`applyID`) REFERENCES allocation(`applyID`);
-  ADD FOREIGN KEY (`applyUName`) REFERENCES users(`username`);
-  ADD FOREIGN KEY (`resID`) REFERENCES residence(`resID`);
-
---
--- Indexes for table `residence`
---
-ALTER TABLE `residence`
-  ADD PRIMARY KEY (`resID`);
-  ADD FOREIGN KEY (`resID`) REFERENCES application(`resID`);
-  ADD FOREIGN KEY (`staffID`) REFERENCES users(`staffID`);
-
---
--- Indexes for table `unit`
---
-ALTER TABLE `unit`
-  ADD PRIMARY KEY (`resID`);
-  ADD FOREIGN KEY (`resID`) REFERENCES residence(`resID`);
-  ADD FOREIGN KEY (`unitNo`) REFERENCES allocation(`unitNo`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`);
-  ADD FOREIGN KEY (`username`) REFERENCES application(`applyUName`);
-  ADD FOREIGN KEY (`staffID`) REFERENCES residence(`staffID`);
-
---
--- Indexes for table `allocation`
---
-ALTER TABLE `allocation`
-  ADD PRIMARY KEY (`applyID`);
-  ADD FOREIGN KEY (`unitNo`) REFERENCES unit(`unitNo`);
-  ADD FOREIGN KEY (`applyID`) REFERENCES application(`applyID`);*/
-
 
 COMMIT;
 
