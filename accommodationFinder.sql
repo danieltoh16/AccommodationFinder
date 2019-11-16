@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `allocation` (
-  `allocateID` varchar(100) NOT NULL,
-  `fromDate` varchar(100) NOT NULL,
-  `duration` varchar(100) NOT NULL,
-  `unitID` varchar(100) NOT NULL,
-  `applyID` varchar(100) NOT NULL,
+  `allocateID` varchar(20) NOT NULL,
+  `fromDate` date NOT NULL,
+  `duration` varchar(10) NOT NULL,
+  `unitID` varchar(20) NOT NULL,
+  `applyID` varchar(20) NOT NULL,
   PRIMARY KEY (`allocateID`),
   FOREIGN KEY (`unitID`) REFERENCES unit(`unitID`),
   FOREIGN KEY (`applyID`) REFERENCES application(`applyID`)
@@ -55,15 +55,15 @@ INSERT INTO `allocation` (`allocateID`, `fromDate`, `duration`, `unitID`, `apply
 --
 
 CREATE TABLE `application` (
-  `applyID` varchar(100) NOT NULL,
+  `applyID` varchar(20) NOT NULL,
   `applyDate` date NOT NULL,
-  `reqMonth` varchar(100) NOT NULL,
-  `reqYear` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `applyUName` varchar(100) NOT NULL,
-  `resID` varchar(100) NOT NULL,
-  `unitNo` varchar(100) NOT NULL,
-  `duration` varchar(100) NOT NULL,
+  `reqMonth` char(10) NOT NULL,
+  `reqYear` int(4) NOT NULL,
+  `status` char(10) NOT NULL,
+  `applyUName` varchar(30) NOT NULL,
+  `resID` varchar(20) NOT NULL,
+  `unitNo` int(10) NOT NULL,
+  `duration` varchar(10) NOT NULL,
   PRIMARY KEY (`applyID`),
   FOREIGN KEY (`applyUName`) REFERENCES users(`username`),
   FOREIGN KEY (`resID`) REFERENCES residence(`resID`)
@@ -85,13 +85,13 @@ INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `statu
 --
 
 CREATE TABLE `residence` (
-  `resID` varchar(100) NOT NULL,
-  `resName` varchar(200) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `numUnits` varchar(100) NOT NULL,
-  `sizePerUnit` varchar(100) NOT NULL,
-  `monthlyRental` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `resID` varchar(20) NOT NULL,
+  `resName` varchar(30) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `numUnits` int(10) NOT NULL,
+  `sizePerUnit` int(10) NOT NULL,
+  `monthlyRental` int(10) NOT NULL,
+  `username` varchar(30) NOT NULL,
   PRIMARY KEY (`resID`),
   FOREIGN KEY (`username`) REFERENCES users(`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -102,8 +102,8 @@ CREATE TABLE `residence` (
 
 INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `username`) VALUES
 ('RES-5dce3f330c2f3', 'Bungalow', 'Jalan 16/11, Seksyen 16, 46350 Petaling Jaya, Selangor', '1', '1500', '600', 'Admin'),
-('RES-5dce3f3daeac8', 'House', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
-('RES-5dce3f4873062', 'Hotel', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'Admin');
+('RES-5dce3f3daeac8', '1 Bukit Utama', 'Changkat Bukit Utama, Bandar Utama, 47800 Petaling Jaya, Selangor', '2', '1750', '600', 'Admin'),
+('RES-5dce3f4873062', 'House', 'Persiaran Cakerawala, 40160 Shah Alam, Selangor', '3', '10000', '600', 'Admin');
 
 
 -- --------------------------------------------------------
@@ -113,10 +113,10 @@ INSERT INTO `residence` (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit
 --
 
 CREATE TABLE `unit` (
-  `unitID` varchar(100) NOT NULL,
-  `resID` varchar(100) NOT NULL,
-  `unitNo` varchar(100) NOT NULL,
-  `availability` varchar(100) NOT NULL,
+  `unitID` varchar(20) NOT NULL,
+  `resID` varchar(20) NOT NULL,
+  `unitNo` int(10) NOT NULL,
+  `availability` char(10) NOT NULL,
   PRIMARY KEY (`unitID`),
   FOREIGN KEY (`resID`) REFERENCES residence(`resID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -140,12 +140,12 @@ INSERT INTO `unit` (`unitID`, `resID`, `unitNo`, `availability`) VALUES
 --
 
 CREATE TABLE `users` (
-  `username` varchar(100) NOT NULL,
-  `usertype` int(2) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `fullname` varchar(100) NOT NULL,
-  `email` varchar(100),
-  `monthlyIncome` varchar(100),
+  `username` varchar(30) NOT NULL,
+  `usertype` int(1) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `email` varchar(30),
+  `monthlyIncome` int(10),
   PRIMARY KEY (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -154,7 +154,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `usertype`, `password`, `fullname`, `email`, `monthlyIncome`) VALUES
-('Admin', 0, 'admin', 'AF Admin', '', ''),
+('Admin', 0, 'admin', 'Daniel Nicholas Figueras Toh', '', ''),
 ('Jason', 1, '1', 'Jason Jonas', 'jason@jason.mail', '1200'),
 ('James', 1, '10', 'James Bond', 'james@FBI.mail', '7500');
 
