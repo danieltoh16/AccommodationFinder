@@ -75,8 +75,8 @@ CREATE TABLE `application` (
 
 INSERT INTO `application` (`applyID`, `applyDate`, `reqMonth`, `reqYear`, `status`, `applyUName`, `resID`, `unitNo`, `duration`) VALUES
 ('APP-5dce3ef54958e', '2018-03-18', 'January', '2020', 'New', 'Jason', 'RES-5dce3f330c2f3', '1', '12 months'),
-('APP-5dce3f04628fa', '2018-08-19', 'February', '2020', 'New', 'James', 'RES-5dce3f3daeac8', '2', '12 months'),
-('APP-5dce3f10dece7', '2019-04-09', 'April', '2020', 'New', 'Jason', 'RES-5dce3f4873062', '3', '18 months');
+('APP-5dce3f04628fa', '2018-08-19', 'February', '2020', 'Waitlist', 'James', 'RES-5dce3f3daeac8', '2', '12 months'),
+('APP-5dce3f10dece7', '2019-04-09', 'April', '2020', 'New', 'Waitlist', 'RES-5dce3f4873062', '3', '18 months');
 
 -- --------------------------------------------------------
 

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>View Applications - Applicant</title>
+  <title>View Applications - Landlord</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,6 +34,8 @@
 
 <body id="page-top">
 
+  <form action="searchApplicationAction.php" method="post">
+
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
@@ -47,7 +52,7 @@
             <a class="nav-link js-scroll-trigger" href="createAccommodation.html">Create residence</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="landlordViewApplications.html">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -62,46 +67,73 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="6">List of applications for HELP Residence</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Select a residence profile</font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th><font color="white">Applicant name</font></th>
-                <th><font color="white">Date of application</font></th>
-                <th><font color="white">Required month</font></th>
-                <th><font color="white">Required year</font></th>
-                <th><font color="white">Application status</font></th>
-                <th></th>
+                <th><font color="white">Residence ID</font></th>
+                <th><font color="white">Residence Name</font></th>
+                <th><font color="white">Location</font></th>
+                <th><font color="white">Number of rooms</font></th>
+                <th><font color="white">Size per room</font></th>
+                <th><font color="white">Price</font></th>
               </tr>
             </thead>
             <tbody>
+              <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+
+                $conn = new mysqli($servername, $username, $password);
+
+                if ($conn->connect_error) {
+                    echo("Connection failed: " . $conn->connect_error);
+                }
+                $conn->select_db("accommodationfinder");
+
+                $searchKeyword = "%".$_SESSION["Username"]."%";
+
+                $lq = "SELECT * FROM residence WHERE username LIKE '$searchKeyword'";
+                $res = $conn->query($lq);
+                foreach($res as $opt){
+              ?>
                 <tr>
-                  <th scope="row" class="name"><font color="white">Daniel Toh</font></th>
-                  <td class="date"><font color="white">1/1/2019</font></td>
-                  <td class="month"><font color="white">January</font></td>
-                  <td class="year"><font color="white">2019</font></td>
-                  <td class="status"><font color="white">Pending</font></td>
-                  <td class="status"><a href="applicationDetails.html"><font color="white"><button style="background-color:#F35119;
-                  color:white;">View</button></font></a></td>
+                  <th scope="row" name="resid" class="resid" id="resid"><font color="white">
+                    <?php echo $opt['resID']?></font></th>
+                  <td class="name"><font color="white"><?php echo $opt['resName']?></font></td>
+                  <td class="location"><font color="white"><?php echo $opt['address']?></font></td>
+                  <td class="norooms"><font color="white"><?php echo $opt['numUnits']?></font></td>
+                  <td class="sizeroom"><font color="white"><?php echo $opt['sizePerUnit']?></font></td>
+                  <td class="price"><font color="white"><?php echo $opt['monthlyRental']?></font></td>
                 </tr>
-                <tr>
-                  <th scope="row" class="name"><font color="white">Adib Raup</font></th>
-                  <td class="date"><font color="white">5/3/2019</font></td>
-                  <td class="month"><font color="white">August</font></td>
-                  <td class="year"><font color="white">2019</font></td>
-                  <td class="status"><font color="white">Pending</font></td>
-                  <td class="button"><a href="applicationDetails.html"><font color="white"><button style="background-color:#F35119;
-                  color:white;">View</button></font></a></td>
-                </tr>
+              <?php }?>
             </tbody>
           </table>
-        <br><br>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="landlordViewApplications.html">Back</a>
+          <div class="col-lg-8 align-self-baseline">
+            <p class="text-white-75 font-weight-light mb-5"><font size="3" color="white"><b>Enter the ID of the
+              residence to check the applications made for that residence (copy the residence ID and paste it below)</b></font></p>
+            <div class="form-group has-danger">
+                <label class="sr-only" for="search">Search</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input type="search" name="room" class="form-control" id="room"
+                    placeholder="Type here..." required autofocus ></input>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Search</button>
+                </div>
+            </div><br>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.html">Back</a>
+          </div>
       </div>
     </div>
   </header>
+</form>
 
   <!-- Footer -->
   <!-- This section shows the copyright of the website-->

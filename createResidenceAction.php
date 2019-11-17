@@ -35,7 +35,7 @@ if ($checkerStaffID->num_rows>0){
 }
 $getUName = $getUserName;
 
-$sql = "INSERT INTO residence (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `staffID`)
+$sql = "INSERT INTO residence (`resID`, `resName`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`, `username`)
 VALUES ('$uniqID', '$name', '$address', '$numUnits', '$sizePerUnit', '$monthlyRental', '$getUName')";
 
 $checkResName = "SELECT * FROM residence WHERE resName = ('$name')";
@@ -52,9 +52,10 @@ if ($checkerName->num_rows > 0){
   echo "<SCRIPT type=\"text/javascript\">alert('$haveAddr');</SCRIPT>";
   echo("<SCRIPT type=\"text/javascript\">window.location = 'createAccommodation.html';</SCRIPT>");
 } else {
-  if (($conn->query($sql) === TRUE)||($result && $result->num_rows)) {
+  if ($conn->query($sql) === TRUE) {
     for ($i = 1; $i <= $numUnits; $i++){
-      $sqlUnit = "INSERT INTO unit (`resID`, `unitNo`, `availability`) VALUES ('$uniqID', '$i', '$defAvail')";
+      $unitID = uniqid("UNIT-",false);
+      $sqlUnit = "INSERT INTO unit (`unitID`, `resID`, `unitNo`, `availability`) VALUES ('$unitID', '$uniqID', '$i', '$defAvail')";
       $result = $conn->query($sqlUnit);
     }
     echo "<SCRIPT type=\"text/javascript\">alert('$msg');</SCRIPT>";
