@@ -13,7 +13,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>Application Details</title>
+  <title>Details of application "<?php echo $_SESSION["appID"] ?>"</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,7 +68,8 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Application Details</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="6">
+            Details of application "<?php echo $_SESSION["appID"] ?>"</font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover">
