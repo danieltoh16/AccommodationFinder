@@ -1,5 +1,6 @@
 <?php
   session_start();
+  $_SESSION["resID"] = $_SESSION["SearchKey"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,7 @@
 
 <body id="page-top">
 
-  <form action="searchApplicationAction.php" method="post">
+  <form action="retrieveApplicationAction.php" method="post">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -67,18 +68,20 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Select a residence profile</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Select an application to review</font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th><font color="white">Residence ID</font></th>
-                <th><font color="white">Residence Name</font></th>
-                <th><font color="white">Location</font></th>
-                <th><font color="white">Number of rooms</font></th>
-                <th><font color="white">Size per room</font></th>
-                <th><font color="white">Price</font></th>
+                <th><font color="white">Application ID</font></th>
+                <th><font color="white">Application Date</font></th>
+                <th><font color="white">Required Month</font></th>
+                <th><font color="white">Required Year</font></th>
+                <th><font color="white">Status</font></th>
+                <th><font color="white">Applicant Username</font></th>
+                <th><font color="white">Unit Number</font></th>
+                <th><font color="white">Duration</font></th>
               </tr>
             </thead>
             <tbody>
@@ -94,20 +97,21 @@
                 }
                 $conn->select_db("accommodationfinder");
 
-                $searchKeyword = "%".$_SESSION["Username"]."%";
+                $searchKeyword = "%".$_SESSION["resID"]."%";
 
-                $lq = "SELECT * FROM residence WHERE username LIKE '$searchKeyword'";
+                $lq = "SELECT * FROM application WHERE resID LIKE '$searchKeyword'";
                 $res = $conn->query($lq);
                 foreach($res as $opt){
               ?>
                 <tr>
-                  <th scope="row" name="resid" class="resid" id="resid"><font color="white">
-                    <?php echo $opt['resID']?></font></th>
-                  <td class="name"><font color="white"><?php echo $opt['resName']?></font></td>
-                  <td class="location"><font color="white"><?php echo $opt['address']?></font></td>
-                  <td class="norooms"><font color="white"><?php echo $opt['numUnits']?></font></td>
-                  <td class="sizeroom"><font color="white"><?php echo $opt['sizePerUnit']?></font></td>
-                  <td class="price"><font color="white"><?php echo $opt['monthlyRental']?></font></td>
+                  <td scope="row" class="applyID"><font color="white"><?php echo $opt['applyID']?></font></td>
+                  <td class="applyDate"><font color="white"><?php echo $opt['applyDate']?></font></td>
+                  <td class="reqMonth"><font color="white"><?php echo $opt['reqMonth']?></font></td>
+                  <td class="reqYear"><font color="white"><?php echo $opt['reqYear']?></font></td>
+                  <td class="status"><font color="white"><?php echo $opt['status']?></font></td>
+                  <td class="uName"><font color="white"><?php echo $opt['applyUName']?></font></td>
+                  <td class="unitNo"><font color="white"><?php echo $opt['unitNo']?></font></td>
+                  <td class="duration"><font color="white"><?php echo $opt['duration']?></font></td>
                 </tr>
               <?php }?>
             </tbody>
