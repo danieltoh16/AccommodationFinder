@@ -128,7 +128,7 @@
                     <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Search</button>
                 </div>
             </div><br>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="searchAccommodation.html">Back</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="landlordHome.php">Back</a>
           </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ $key = "%".$searchKey."%";
 $sql = "SELECT * FROM application WHERE resID LIKE '$key'";
 $check = $conn -> query($sql);
 
-$wrongMsg = "No results found, redirecting back to search page";
+$wrongMsg = "No results found, redirecting back to list of residences page";
 
 if ($check->num_rows > 0){
     echo("<SCRIPT type=\"text/javascript\">window.location = 'listOfApplications.php?id=$searchKey';</SCRIPT>");

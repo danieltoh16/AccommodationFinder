@@ -13,7 +13,7 @@
   <meta name="author" content="">
 
   <!-- Title displayed on the tab -->
-  <title>View Applications - Landlord</title>
+  <title>Application Details</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
 
 <body id="page-top">
 
-  <form action="retrieveApplicationAction.php" method="post">
+  <form action="createAllocationAction.php" method="POST">
 
   <!-- Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -53,7 +53,7 @@
             <a class="nav-link js-scroll-trigger" href="createAccommodation.html">Create residence</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="landlordViewApplications.html">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>
@@ -68,7 +68,7 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Select an application to review</font></h1>
+          <h1 class="text-uppercase text-white font-weight-bold"><font size="7">Application Details</font></h1>
           <hr class="divider my-4">
         </div>
           <table class="table table-hover">
@@ -117,21 +117,36 @@
             </tbody>
           </table>
           <div class="col-lg-8 align-self-baseline">
-            <p class="text-white-75 font-weight-light mb-5"><font size="3" color="white"><b>Enter the ID of the
-              application that you want to review (copy the application ID and paste it below)</b></font></p>
-            <div class="form-group has-danger">
-                <label class="sr-only" for="search">Search</label>
+            <div class="form-group">
+                <label class="sr-only" for="name">Status</label>
+                <p class="text-white-50 mb-4"><font color="white">What do you want to do with this application?</font></p>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                    <input type="search" name="apply" class="form-control" id="apply"
-                    placeholder="Type here..." required autofocus ></input>
+                    <div class="input-group-addon" style="width: 2.6rem"><font color="white" size="+2.5"><i class="	far fa-calendar"></i></font></div>
+                    <select name="application" class="form-control" required>
+                      <option value="Waitlist">Put into the waitlist</option>
+                      <option value="Approved">Accept the application</option>
+                      <option value="Rejected">Reject the application</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="name">Required Date</label>
+                <p class="text-white-50 mb-4"><font color="white">When is the applicant allowed to move into this residence unit?
+                (only answer if you are accepting this application)</font></p>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><font color="white" size="+2.5"><i class="	far fa-calendar-alt"></i></font></div>
+                    <input type="date" name="reqDate" class="form-control" id="reqDate">
                 </div>
             </div>
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp  Search</button>
+                    <a href="landlordHome.html"><button type="submit" class="btn btn-success" onclick="myFunction()">
+                      <i class="fas fa-sign-in-alt"></i>&nbsp  Book This Room</button></a>
                 </div>
-            </div><br>
+            </div>
+          </div>
+          <div class="col-lg-6">
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="landlordViewApplications.php">Back</a>
           </div>
       </div>
