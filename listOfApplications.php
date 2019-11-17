@@ -53,7 +53,7 @@
             <a class="nav-link js-scroll-trigger" href="createAccommodation.html">Create residence</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#page-top">View applications</a>
+            <a class="nav-link js-scroll-trigger" href="landlordViewApplications.php">View applications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.html">Logout</a>

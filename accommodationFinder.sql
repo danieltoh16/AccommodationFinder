@@ -44,9 +44,9 @@ CREATE TABLE `allocation` (
 --
 
 INSERT INTO `allocation` (`allocateID`, `fromDate`, `duration`, `unitID`, `applyID`) VALUES
-('ALC-5dcf849e9c072', '19-1-2019', '12 months', 'UNIT-5dcf702a6dba7', 'APP-5dce3ef54958e'),
-('ALC-5dcf84ae7c9be', '6-7-2019', '12 months', 'UNIT-5dcf719db95a8', 'APP-5dce3f04628fa'),
-('ALC-5dcf84b76c416', '12-12-2019', '18 months', 'UNIT-5dcf71e0c99ca', 'APP-5dce3f10dece7');
+('ALC-5dcf849e9c072', '2019-1-19', '12 months', 'UNIT-5dcf702a6dba7', 'APP-5dce3ef54958e'),
+('ALC-5dcf84ae7c9be', '2019-7-6', '12 months', 'UNIT-5dcf719db95a8', 'APP-5dce3f04628fa'),
+('ALC-5dcf84b76c416', '2019-12-12', '18 months', 'UNIT-5dcf71e0c99ca', 'APP-5dce3f10dece7');
 
 -- --------------------------------------------------------
 
