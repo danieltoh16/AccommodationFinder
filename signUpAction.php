@@ -23,8 +23,8 @@ $msg = "Sign up successful. Redirecting to login.";
 $haveUsername = "Username is taken, please try another one";
 $haveEmail = "Email is taken, please try another one";
 
-$sql = "INSERT INTO users (`staffID`, `usertype`, `username`, `password`, `fullName`, `email`, `monthlyIncome`)
-VALUES ('', 1, '$uName', '$pass', '$fullName', '$email', '$monthIncome')";
+$sql = "INSERT INTO users (`username`, `usertype`, `password`, `fullName`, `email`, `monthlyIncome`)
+VALUES ('$uName', 1, '$pass', '$fullName', '$email', '$monthIncome')";
 
 $checkUsername = "SELECT * FROM users WHERE username = ('$uName')";
 $checkerU = $conn -> query($checkUsername);
