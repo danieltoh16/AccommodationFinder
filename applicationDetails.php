@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $_SESSION["resID"] = $_SESSION["SearchKey"];
+  $_SESSION["appID"] = $_SESSION["KeySearch"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,9 +97,9 @@
                 }
                 $conn->select_db("accommodationfinder");
 
-                $searchKeyword = "%".$_SESSION["resID"]."%";
+                $searchKeyword = "%".$_SESSION["appID"]."%";
 
-                $lq = "SELECT * FROM application WHERE resID LIKE '$searchKeyword'";
+                $lq = "SELECT * FROM application WHERE applyID LIKE '$searchKeyword'";
                 $res = $conn->query($lq);
                 foreach($res as $opt){
               ?>

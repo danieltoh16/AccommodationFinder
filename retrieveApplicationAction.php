@@ -11,18 +11,18 @@ if ($conn->connect_error) {
     echo("Connection failed: " . $conn->connect_error);
 }
 
-$searchKey = $_POST['search'];
-$key = "%".$searchKey."%";
+$keySearch = $_POST['appID'];
+$keys = "%".$keySearch."%";
 
-$sql = "SELECT * FROM application WHERE resID LIKE '$key'";
+$sql = "SELECT * FROM application WHERE applyID LIKE '$keys'";
 $check = $conn -> query($sql);
 
-$wrongMsg = "No results found, redirecting back to search page";
+$wrongMsg = "No results found, redirecting back to list of residences page";
 
 if ($check->num_rows > 0){
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'listOfApplications.php?id=$searchKey';</SCRIPT>");
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$searchKey';</SCRIPT>");
     session_start();
-    $_SESSION["SearchKey"] = "$searchKey";
+    $_SESSION["KeySearch"] = "$keySearch";
   } else {
     echo "<SCRIPT type=\"text/javascript\">alert('$wrongMsg');</SCRIPT>";
     echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordViewApplications.php';</SCRIPT>");

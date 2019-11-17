@@ -122,7 +122,7 @@
             <div class="form-group has-danger">
                 <label class="sr-only" for="search">Search</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                    <input type="search" name="apply" class="form-control" id="apply"
+                    <input type="search" name="appID" class="form-control" id="appID"
                     placeholder="Type here..." required autofocus ></input>
                 </div>
             </div>
