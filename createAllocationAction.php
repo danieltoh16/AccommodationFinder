@@ -46,8 +46,6 @@ if ($checkerUnitDetails->num_rows>0){
 $unitID = $getUnitID;
 
 //initialise messages
-$cannotAccept = "Application is automatically rejected by the system because applicant does not have the
-monthly income to afford the residence";
 $errorMsg = "Our system has encountered an error. Please check your connection and try again.";
 $acceptMsg = "Accepting request is successful! Redirecting back to list of residences page.";
 $acceptWrongMsg = "Accepting request failed. Please try again.";
@@ -61,7 +59,7 @@ $noDateEnteredMsg = "Please enter a date";
 if ($status == "Approved") {
   if ($date == ""){
     echo "<SCRIPT type=\"text/javascript\">alert('$noDateEnteredMsg');</SCRIPT>";
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php';</SCRIPT>");
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$applyID';</SCRIPT>");
   } else {
     $createAllocationQuery = "INSERT INTO allocation (`allocateID`, `fromDate`, `duration`, `unitID`, `applyID`)
     VALUES ('$alcID', '$date', '$duration', '$unitID', '$applyID')";
@@ -73,7 +71,7 @@ if ($status == "Approved") {
       echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordViewApplications.php';</SCRIPT>");
     } else {
       echo "<SCRIPT type=\"text/javascript\">alert('$acceptWrongMsg');</SCRIPT>";
-      echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php';</SCRIPT>");
+      echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$applyID';</SCRIPT>");
     }
   }
 } else if ($status == "Waitlist") {
@@ -83,7 +81,7 @@ if ($status == "Approved") {
     echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordViewApplications.php';</SCRIPT>");
   } else {
     echo "<SCRIPT type=\"text/javascript\">alert('$waitWrongMsg');</SCRIPT>";
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php';</SCRIPT>");
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$applyID';</SCRIPT>");
   }
 } else if ($status == "Rejected") {
   $updateStatusQuery = "UPDATE application SET status = 'Rejected' WHERE applyID = '$applyID'";
@@ -92,7 +90,7 @@ if ($status == "Approved") {
     echo("<SCRIPT type=\"text/javascript\">window.location = 'landlordViewApplications.php';</SCRIPT>");
   } else {
     echo "<SCRIPT type=\"text/javascript\">alert('$rejectWrongMsg');</SCRIPT>";
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php';</SCRIPT>");
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$applyID';</SCRIPT>");
   }
 } else {
   echo "<SCRIPT type=\"text/javascript\">alert('$errorMsg');</SCRIPT>";

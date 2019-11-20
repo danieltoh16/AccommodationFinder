@@ -20,7 +20,7 @@ $check = $conn -> query($sql);
 $wrongMsg = "No results found, redirecting back to list of residences page";
 
 if ($check->num_rows > 0){
-    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$searchKey';</SCRIPT>");
+    echo("<SCRIPT type=\"text/javascript\">window.location = 'applicationDetails.php?id=$keySearch';</SCRIPT>");
     session_start();
     $_SESSION["KeySearch"] = "$keySearch";
   } else {
